@@ -35,6 +35,15 @@ extension UIImage {
 
         return rotatedImage
     }
+
+    func resize(width: CGFloat, height: CGFloat) -> UIImage {
+        UIGraphicsBeginImageContext(CGSize(width: width, height: height))
+        self.draw(in: CGRect(x: 0, y: 0, width: width, height: height))
+        let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return resizeImage!
+    }
+
     private func min(_ a : Int, _ b : Int ) -> Int {
         if a < b {
             return a
